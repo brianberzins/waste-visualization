@@ -32,8 +32,16 @@ record ValueStream(Duration duration,
         graphics.setColor(Color.WHITE);
         var size = getSize();
         graphics.fillRect(0, 0, size.width, size.height);
+
+        var cutoff = size.width - PIXELS_BOARDER;
+        var currentPixelX = PIXELS_BOARDER;
         graphics.setColor(Color.GREEN);
-        graphics.drawLine(PIXELS_BOARDER, PIXELS_BOARDER, PIXELS_BOARDER + pixelsForDuration(timeToBlock.get()), PIXELS_BOARDER);
+
+        while (currentPixelX < cutoff) {
+            var nextPixelX = Math.max(currentPixelX + pixelsForDuration(timeToBlock.get()), cutoff);
+            graphics.drawLine(currentPixelX, PIXELS_BOARDER,currentPixelX + pixelsForDuration(timeToBlock.get()), PIXELS_BOARDER);
+            currentPixelX = nextPixelX + 1;
+        }
     }
 
     @Override

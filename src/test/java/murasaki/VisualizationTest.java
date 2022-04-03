@@ -1,6 +1,8 @@
 package murasaki;
 
 import org.approvaltests.awt.AwtApprovals;
+import org.approvaltests.reporters.ImageWebReporter;
+import org.approvaltests.reporters.UseReporter;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -8,6 +10,7 @@ import java.time.Duration;
 class VisualizationTest {
 
     @Test
+    @UseReporter(ImageWebReporter.class)
     void visualization() {
         var valueStream = new ValueStream(
                 Duration.ofHours(6),
