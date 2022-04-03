@@ -35,11 +35,16 @@ record ValueStream(Duration duration,
 
         var cutoff = size.width - PIXELS_BOARDER;
         var currentPixelX = PIXELS_BOARDER;
-        graphics.setColor(Color.GREEN);
 
         while (currentPixelX < cutoff) {
+            graphics.setColor(Color.GREEN);
             var nextPixelX = Math.min(currentPixelX + pixelsForDuration(timeToBlock.get()), cutoff);
             graphics.drawLine(currentPixelX, PIXELS_BOARDER,nextPixelX, PIXELS_BOARDER);
+            currentPixelX = nextPixelX + 1;
+
+            graphics.setColor(Color.RED);
+            nextPixelX = Math.min(currentPixelX + pixelsForDuration(timeToResolution.get()), cutoff);
+            graphics.drawLine(currentPixelX, size.height - PIXELS_BOARDER, nextPixelX, size.height - PIXELS_BOARDER);
             currentPixelX = nextPixelX + 1;
         }
     }
