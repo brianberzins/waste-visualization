@@ -38,8 +38,8 @@ record ValueStream(Duration duration,
         graphics.setColor(Color.GREEN);
 
         while (currentPixelX < cutoff) {
-            var nextPixelX = Math.max(currentPixelX + pixelsForDuration(timeToBlock.get()), cutoff);
-            graphics.drawLine(currentPixelX, PIXELS_BOARDER,currentPixelX + pixelsForDuration(timeToBlock.get()), PIXELS_BOARDER);
+            var nextPixelX = Math.min(currentPixelX + pixelsForDuration(timeToBlock.get()), cutoff);
+            graphics.drawLine(currentPixelX, PIXELS_BOARDER,nextPixelX, PIXELS_BOARDER);
             currentPixelX = nextPixelX + 1;
         }
     }
