@@ -39,7 +39,12 @@ record ValueStream(Duration duration,
         while (currentPixelX < cutoff) {
             graphics.setColor(Color.GREEN);
             var nextPixelX = Math.min(currentPixelX + pixelsForDuration(timeToBlock.get()), cutoff);
-            graphics.drawLine(currentPixelX, PIXELS_BOARDER,nextPixelX, PIXELS_BOARDER);
+            graphics.drawLine(currentPixelX, PIXELS_BOARDER, nextPixelX, PIXELS_BOARDER);
+            currentPixelX = nextPixelX + 1;
+
+            graphics.setColor(Color.ORANGE);
+            nextPixelX = Math.min(currentPixelX + pixelsForDuration(timeToContextSwitch.get()), cutoff);
+            graphics.drawLine(currentPixelX, size.height / 2, nextPixelX, size.height / 2);
             currentPixelX = nextPixelX + 1;
 
             graphics.setColor(Color.RED);

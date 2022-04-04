@@ -15,7 +15,7 @@ class VisualizationTest {
                 Duration.ofHours(6),
                 () -> Duration.ofHours(3),
                 () -> Duration.ofHours(2),
-                () -> Duration.ofMinutes(0));
+                () -> Duration.ofMinutes(5));
         AwtApprovals.verify(valueStream);
     }
 
