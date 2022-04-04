@@ -11,7 +11,7 @@ class VisualizationTest {
     @Test
     @UseReporter(VerticalImageReporter.class)
     public void visualization() {
-        var valueStream = new ValueStream(
+        var valueStream = new ValueStreamFactory(
                 Duration.ofHours(6),
                 () -> Duration.ofHours(3),
                 () -> Duration.ofHours(2),

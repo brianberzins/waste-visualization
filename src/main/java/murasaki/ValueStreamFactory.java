@@ -7,10 +7,10 @@ import java.awt.*;
 import java.time.Duration;
 import java.util.function.Supplier;
 
-record ValueStream(Duration duration,
-                   Supplier<Duration> timeToBlock,
-                   Supplier<Duration> timeToResolution,
-                   Supplier<Duration> timeToContextSwitch) implements Paintable {
+record ValueStreamFactory(Duration duration,
+                          Supplier<Duration> timeToBlock,
+                          Supplier<Duration> timeToResolution,
+                          Supplier<Duration> timeToContextSwitch) implements Paintable {
 
     private static final int PIXELS_PER_5_MINUTES = 5;
     private static final int PIXELS_BOARDER = 10;
