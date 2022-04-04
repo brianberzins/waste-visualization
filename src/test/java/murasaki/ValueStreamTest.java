@@ -1,6 +1,5 @@
 package murasaki;
 
-import org.approvaltests.awt.AwtApprovals;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
