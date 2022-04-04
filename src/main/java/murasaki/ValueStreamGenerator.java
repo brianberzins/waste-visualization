@@ -27,16 +27,17 @@ class ValueStreamGenerator {
 
     ValueStream build() {
         var activities = new ArrayList<Activity>();
-        Duration workRemaining = timeToComplete.get();
-        while (0 < workRemaining.getSeconds()) {
-            var timeToNextBlock = timeToBlock.get();
-            if (timeToNextBlock.compareTo(workRemaining) < 0) {
-                activities.add(new Activity(ActivityType.PRODUCTIVE, timeToNextBlock));
-                activities.add(new Activity(ActivityType.BLOCKED, timeToResolution.get()));
+        Duration remaining = timeToComplete.get();
+        while (0 < remaining.getSeconds()) {
+            var toBlock = timeToBlock.get();
+            var toResolution = timeToResolution.get();
+            if (toBlock.compareTo(remaining) < 0) {
+                activities.add(new Activity(ActivityType.PRODUCTIVE, toBlock));
+                activities.add(new Activity(ActivityType.BLOCKED, toResolution));
             } else {
-                activities.add(new Activity(ActivityType.PRODUCTIVE, timeToNextBlock));
+                activities.add(new Activity(ActivityType.PRODUCTIVE, toBlock));
             }
-            workRemaining = workRemaining.minus(timeToNextBlock);
+            remaining = remaining.minus(toBlock);
         }
         return new ValueStream(activities);
     }
