@@ -14,7 +14,7 @@ class ValueStreamTest {
                 .timeToComplete(     () -> Duration.ofHours(7))
                 .timeToBlock(        () -> Duration.ofHours(2))
                 .timeToResolution(   () -> Duration.ofHours(1))
-                .build();
+                .generate();
         assertEquals(Duration.ofHours(10), valueStream.toComplete());
     }
 

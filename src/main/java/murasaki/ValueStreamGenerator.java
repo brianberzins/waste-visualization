@@ -25,7 +25,7 @@ class ValueStreamGenerator {
         return this;
     }
 
-    ValueStream build() {
+    ValueStream generate() {
         var activities = new ArrayList<Activity>();
         Duration remaining = timeToComplete.get();
         while (0 < remaining.getSeconds()) {
