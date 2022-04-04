@@ -11,11 +11,11 @@ class ValueStreamTest {
     @Test
     void testValueSteam() {
         var valueStream = new ValueStreamGenerator()
-                .timeToComplete(     () -> Duration.ofHours(6))
+                .timeToComplete(     () -> Duration.ofHours(7))
                 .timeToBlock(        () -> Duration.ofHours(2))
                 .timeToResolution(   () -> Duration.ofHours(1))
                 .build();
-        assertEquals(Duration.ofHours(8), valueStream.toComplete());
+        assertEquals(Duration.ofHours(10), valueStream.toComplete());
     }
 
 

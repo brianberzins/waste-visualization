@@ -35,7 +35,7 @@ class ValueStreamGenerator {
                 activities.add(new Activity(ActivityType.PRODUCTIVE, toBlock));
                 activities.add(new Activity(ActivityType.BLOCKED, toResolution));
             } else {
-                activities.add(new Activity(ActivityType.PRODUCTIVE, toBlock));
+                activities.add(new Activity(ActivityType.PRODUCTIVE, remaining));
             }
             remaining = remaining.minus(toBlock);
         }
