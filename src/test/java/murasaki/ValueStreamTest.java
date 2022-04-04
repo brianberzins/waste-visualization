@@ -1,8 +1,10 @@
 package murasaki;
 
+import org.approvaltests.awt.AwtApprovals;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,5 +19,14 @@ class ValueStreamTest {
     @Test
     void testValueSteam() {
         assertEquals(Duration.ofHours(10), valueStream.toComplete());
+    }
+
+    @Test
+    void testMultiValueSteam() {
+        var valueStreams = ValueStreamCombiner.combine(List.of(valueStream, valueStream));
+        assertNotNull(valueStreams);
+        assertEquals(2, valueStreams.size());
+        assertEquals(Duration.ofHours(10), valueStreams.get(0).toComplete());
+        assertEquals(Duration.ofHours(17), valueStreams.get(1).toComplete());
     }
 }
