@@ -18,15 +18,4 @@ class ValueStreamTest {
         assertEquals(Duration.ofHours(10), valueStream.toComplete());
     }
 
-
-//    Duration duration,
-//    Supplier<Duration> timeToBlock,
-//    Supplier<Duration> timeToResolution,
-//    Supplier<Duration> timeToContextSwitch
-//
-//                    Duration.ofHours(6),
-//                            () -> Duration.ofHours(3),
-//                            () -> Duration.ofHours(2),
-//                            () -> Duration.ofMinutes(5));
-
 }
