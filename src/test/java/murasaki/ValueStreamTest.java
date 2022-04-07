@@ -22,11 +22,13 @@ class ValueStreamTest {
 
     @Test
     void testMultiValueSteam() {
-        var valueStreams = ValueStreamCombiner.combine(Collections.nCopies(2, valueStream));
+        var valueStreams = ValueStreamCombiner.combine(Collections.nCopies(3, valueStream));
         assertNotNull(valueStreams);
-        assertEquals(2, valueStreams.size());
+        assertEquals(3, valueStreams.size());
         assertEquals(Duration.ofHours(10), valueStreams.get(0).duration());
         assertEquals(Duration.ofHours(20), valueStreams.get(1).duration());
+        assertEquals(Duration.ofHours(30), valueStreams.get(2).duration());
         assertEquals(new Activity(ActivityType.WAITING, Duration.ofHours(10)), valueStreams.get(1).activities().get(0));
+        assertEquals(new Activity(ActivityType.WAITING, Duration.ofHours(20)), valueStreams.get(2).activities().get(0));
     }
 }

@@ -16,10 +16,10 @@ class ValueStreamCombiner {
         for (int i = 0; i < valueStreams.size(); i++) {
             results.set(i, valueStreams.get(i).copy());
             results.get(i).activities().add(0, new Activity(ActivityType.WAITING, currentDuration));
-            currentDuration = currentDuration.plus(results.get(i).duration());
+            currentDuration = results.get(i).duration();
         }
         results.get(0).activities().remove(0);
-        return results;
+        return results.stream().map(ValueStream::collapse).toList();
     }
 
 }
