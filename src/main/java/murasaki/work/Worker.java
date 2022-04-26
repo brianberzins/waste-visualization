@@ -3,7 +3,7 @@ package murasaki.work;
 import java.time.Duration;
 import java.util.ArrayList;
 
-class Worker {
+class Worker implements QueueWorker {
     ArrayList<Work> workList;
 
     Worker() {
