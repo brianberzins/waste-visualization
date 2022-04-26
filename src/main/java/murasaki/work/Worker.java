@@ -14,11 +14,13 @@ class Worker implements QueueWorker {
         workList = work;
     }
 
-    boolean addWork(Work work) {
+    @Override
+    public boolean addWork(Work work) {
         return workList.add(work);
     }
 
-    Duration perform(Duration duration) {
+    @Override
+    public Duration perform(Duration duration) {
         if (duration.compareTo(Duration.ZERO) <= 0) {
             return Duration.ZERO;
         }
