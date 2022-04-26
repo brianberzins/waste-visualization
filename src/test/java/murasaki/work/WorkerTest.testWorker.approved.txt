@@ -1,0 +1,9 @@
+work[0] = remaining=PT0S
+history=[
+  WORK PT8H
+]
+work[1] = remaining=PT0S
+history=[
+  WAIT PT5H,
+  WORK PT9H
+]
