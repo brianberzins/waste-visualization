@@ -6,33 +6,26 @@ import java.util.List;
 
 class Work {
 
-    final Duration duration;
+    final Duration remaining;
     final List<Activity> history;
 
-    Work(Duration duration) {
-        this(duration, new ArrayList<>());
+    Work(Duration remaining) {
+        this(remaining, new ArrayList<>());
     }
 
-    Work(Duration duration, List<Activity> history) {
-        this.duration = duration;
+    Work(Duration remaining, List<Activity> history) {
+        this.remaining = remaining;
         this.history = history;
     }
 
-    boolean isComplete() {
-        return duration.isZero();
-    }
-
     Work perform(ActivityType activityType, Duration duration) {
-        if (isComplete()) {
-            return this;
-        }
         if (activityType == ActivityType.WORK) {
-            if (this.duration.compareTo(duration) < 0) {
-                duration = this.duration;
+            if (this.remaining.compareTo(duration) < 0) {
+                duration = this.remaining;
             }
-            return new Work(this.duration.minus(duration), appendHistory(activityType, duration));
+            return new Work(this.remaining.minus(duration), appendHistory(activityType, duration));
         }
-        return new Work(this.duration, appendHistory(activityType, duration));
+        return new Work(this.remaining, appendHistory(activityType, duration));
     }
 
     List<Activity> appendHistory(ActivityType activityType, Duration duration) {
@@ -49,7 +42,7 @@ class Work {
     @Override
     public String toString() {
         return "Work{" +
-                "remaining=" + duration +
+                "remaining=" + remaining +
                 ", history=" + history +
                 '}';
     }
