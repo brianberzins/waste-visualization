@@ -12,7 +12,7 @@ class WorkerTest {
 
     @Test
     void testWorker() {
-        var worker = new Worker();
+        var worker = new SimpleWorker();
         assertTrue(worker.addWork(new Work(Duration.ofHours(8))));
         assertEquals(Duration.ofHours(3), worker.perform(Duration.ofHours(3)));
         assertTrue(worker.addWork(new Work(Duration.ofHours(9))));

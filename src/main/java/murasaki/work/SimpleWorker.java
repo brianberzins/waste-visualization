@@ -3,14 +3,14 @@ package murasaki.work;
 import java.time.Duration;
 import java.util.ArrayList;
 
-class Worker implements QueueWorker {
+class SimpleWorker implements QueueWorker {
     ArrayList<Work> workList;
 
-    Worker() {
+    SimpleWorker() {
         this(new ArrayList<>());
     }
 
-    Worker(ArrayList<Work> work) {
+    SimpleWorker(ArrayList<Work> work) {
         workList = work;
     }
 
