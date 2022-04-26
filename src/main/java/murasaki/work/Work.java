@@ -19,7 +19,7 @@ class Work {
     }
 
     Duration perform(ActivityType activityType, Duration duration) {
-        if (remaining.isZero()) {
+        if (isComplete()) {
             return Duration.ZERO;
         }
         if (activityType == ActivityType.WORK) {
@@ -35,6 +35,10 @@ class Work {
             history.add(new Activity(activityType, duration));
         }
         return duration;
+    }
+
+    boolean isComplete() {
+        return remaining.isZero();
     }
 
     @Override
