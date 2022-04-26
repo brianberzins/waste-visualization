@@ -1,1 +1,6 @@
-Work{remaining=PT1H, history=[Activity{type=WORK, duration=PT7H}, Activity{type=WAIT, duration=PT11H}]}
+remaining=PT0S
+history=[
+  WORK PT3H,
+  WAIT PT5H,
+  WORK PT5H
+]

@@ -6,10 +6,7 @@ record Activity(ActivityType type, Duration duration) {
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "type=" + type +
-                ", duration=" + duration +
-                '}';
+        return type + " " + duration;
     }
 
 }

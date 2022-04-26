@@ -6,8 +6,8 @@ import java.util.List;
 
 class Work {
 
-    final Duration remaining;
-    final List<Activity> history;
+    Duration remaining;
+    List<Activity> history;
 
     Work(Duration remaining) {
         this(remaining, new ArrayList<>());
@@ -18,34 +18,31 @@ class Work {
         this.history = history;
     }
 
-    Work perform(ActivityType activityType, Duration duration) {
+    Duration perform(ActivityType activityType, Duration duration) {
+        if (remaining.isZero()) {
+            return Duration.ZERO;
+        }
         if (activityType == ActivityType.WORK) {
-            if (this.remaining.compareTo(duration) < 0) {
-                duration = this.remaining;
+            if (remaining.compareTo(duration) < 0) {
+                duration = remaining;
             }
-            return new Work(this.remaining.minus(duration), appendHistory(activityType, duration));
+            remaining = remaining.minus(duration);
         }
-        return new Work(this.remaining, appendHistory(activityType, duration));
-    }
-
-    List<Activity> appendHistory(ActivityType activityType, Duration duration) {
         var lastIndex = history.size() - 1;
-        var copy = new ArrayList<>(history);
         if (0 <= lastIndex && history.get(lastIndex).type() == activityType) {
-            copy.set(lastIndex, new Activity(activityType, history.get(lastIndex).duration().plus(duration)));
+            history.set(lastIndex, new Activity(activityType, history.get(lastIndex).duration().plus(duration)));
         } else {
-            copy.add(new Activity(activityType, duration));
+            history.add(new Activity(activityType, duration));
         }
-        return copy;
+        return duration;
     }
 
     @Override
     public String toString() {
-        return "Work{" +
-                "remaining=" + remaining +
-                ", history=" + history +
-                '}';
+        return "remaining=" + remaining + "\n" +
+                "history=[" + "\n  " +
+                String.join(",\n  ", history.stream().map(Activity::toString).toList()) + "\n" +
+                "]";
     }
-
 
 }
