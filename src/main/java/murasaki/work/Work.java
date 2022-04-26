@@ -6,16 +6,14 @@ import java.util.List;
 
 class Work {
 
-    final String name;
     final Duration duration;
     final List<Activity> history;
 
-    Work(String name, Duration duration) {
-        this(name, duration, new ArrayList<>());
+    Work(Duration duration) {
+        this(duration, new ArrayList<>());
     }
 
-    Work(String name, Duration duration, List<Activity> history) {
-        this.name = name;
+    Work(Duration duration, List<Activity> history) {
         this.duration = duration;
         this.history = history;
     }
@@ -25,9 +23,9 @@ class Work {
             if (this.duration.compareTo(duration) < 0) {
                 duration = this.duration;
             }
-            return new Work(name, this.duration.minus(duration), appendHistory(activityType, duration));
+            return new Work(this.duration.minus(duration), appendHistory(activityType, duration));
         }
-        return new Work(name, this.duration, appendHistory(activityType, duration));
+        return new Work(this.duration, appendHistory(activityType, duration));
     }
 
     List<Activity> appendHistory(ActivityType activityType, Duration duration) {
@@ -44,8 +42,7 @@ class Work {
     @Override
     public String toString() {
         return "Work{" +
-                "name='" + name + '\'' +
-                ", remaining=" + duration +
+                "remaining=" + duration +
                 ", history=" + history +
                 '}';
     }
