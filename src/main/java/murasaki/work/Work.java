@@ -18,7 +18,14 @@ class Work {
         this.history = history;
     }
 
+    boolean isComplete() {
+        return duration.isZero();
+    }
+
     Work perform(ActivityType activityType, Duration duration) {
+        if (isComplete()) {
+            return this;
+        }
         if (activityType == ActivityType.WORK) {
             if (this.duration.compareTo(duration) < 0) {
                 duration = this.duration;
