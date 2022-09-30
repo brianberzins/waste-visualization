@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.approvaltests:approvaltests:18.3.0'
+    implementation 'com.approvaltests:approvaltests:18.4.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
 }
